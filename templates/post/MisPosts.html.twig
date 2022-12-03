@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}} - {{ app.user.name_user }}'s profile{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <center>
+    <div class="container col-md-12 align-self-center" style="justify-content: center; margin-top: 20px">
+            <h2 style="color: white; text-align: center">{{ app.user.name_user }}'s posts</h2>
+                {% for post in posts %}
+                <div class="col-md-3 cursor align-self-center" style="display: inline-block">
+                    <div class="bg-white rounded p-3 my-3" onclick="window.location.href='{{ path('VerPost',{id:post.id}) }}'" style="cursor: pointer">
+                        <div class="p-2 bd-highlight">
+                            <div class="align-self-center">
+                                <img class="rounded" src="{{ asset('uploads/photos/'~post.picture) }}" width="250px">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+    </div>
+    </center>
+{% endblock %}

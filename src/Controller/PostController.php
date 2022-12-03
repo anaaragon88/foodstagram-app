@@ -50,4 +50,21 @@ class PostController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    #[Route('/post/{id}', name: 'VerPost')]
+    public function VerPost($id, Request $request, ManagerRegistry $doctrine)
+    {
+        $em = $doctrine->getManager();
+        $post = $em->getRepository(Post::class)->find($id);
+        return $this->render('post/verPost.html.twig', ['post' => $post]);
+    }
+
+    #[Route('/mi-perfil', name: 'MiPerfil')]
+    public function MisPost(ManagerRegistry $doctrine)
+    {
+        $em = $doctrine->getManager();
+        $user = $this->getUser();
+        $posts = $em->getRepository(Post::class)->findBy(['user' => $user]);
+        return $this->render('post/MisPosts.html.twig', ['posts' => $posts]);
+    }
 }

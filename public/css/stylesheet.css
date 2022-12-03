@@ -1,0 +1,111 @@
+@font-face {
+    font-family: 'signikabold';
+    src: url('../fonts/MADEOkineSansMedium.woff2') format('woff2'),
+        url('../fonts/MADEOkineSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'signikaregular';
+    src: url('../fonts/MADEOkineSansRegular.woff2') format('woff2'),
+        url('../fonts/MADEOkineSansRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'remachine_script_personal_uRg';
+    src: url('../fonts/remachinescript_personal_use-webfont.woff2') format('woff2'),
+        url('../fonts/remachinescript_personal_use-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body {
+    background-color: #EB5629;
+    background-size: cover;
+    height: 500px;
+    font-family: signikaregular;
+
+
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: signikabold;
+    color: #3821AB;
+}
+
+.navbar {
+    background-color: #ffffff !important;
+    font-family: signikaregular;
+    font-size: 1.2em;
+}
+
+
+.nav-link {
+    color: #3e3e3e !important;
+    padding: 20px !important;
+}
+
+
+.nav-link:hover {
+    color: #EB5629 !important;
+}
+
+
+.nav-link {
+    color: #3e3e3e !important;
+    padding: 20px !important;
+}
+
+.nav-usuario {
+    color: #ffffff !important;
+    font-family: signikabold;
+    margin-top: 20px;
+    margin-right: 20px;
+    font-size: 2em;
+}
+
+.fa-user,
+.bg-yellow {
+    color: #7190ff;
+}
+
+.fa-clock,
+.bg-green {
+    color: #5957a1;
+}
+
+.cursor:hover {
+    cursor: pointer;
+}
+
+#logo {
+    height: 200px;
+    padding: 30px;
+}
+
+/*#titulo {
+    padding: 20px !important;
+}*/
+
+.btn {
+    margin: 5px !important;
+}
+
+.btn-link {
+    color: #ffffff !important;
+    font-family: signikabold;
+    font-size: 1.5em;
+}
+
+#registrate {
+    margin: 50px !important;
+}

@@ -1,20 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DashboardController!{% endblock %}
+{% block title %}
+    {{parent()}} 
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/anaaragon/Desktop/Foodstagram/src/Controller/DashboardController.php'|file_link(0) }}">src/Controller/DashboardController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/anaaragon/Desktop/Foodstagram/templates/dashboard/index.html.twig'|file_link(0) }}">templates/dashboard/index.html.twig</a></code></li>
-    </ul>
-</div>
+    {{parent()}} 
+    <div class="container">
+        <div class="row" style="justify-content: center; margin-top: 20px">
+            <div class="col-md-6">
+                {% for post in pagination %}
+                <div class="bg-white rounded p-3 my-3"  onclick="window.location.href='{{ path('VerPost',{id:post.id}) }}'">
+                    <div class="d-flex bd-highlight">
+                        <div class="p-2 flex-grow-1 bd-highlight">
+                        <div class="bg-yellow"> <i class="fa fa-user" style="margin-left:15px"></i><strong> {{post.name_user}}</strong></div>
+                        <div class="p-2 bd-highlight">
+                            <div class="align-self-center">
+                                <img class="rounded" src="{{ asset('uploads/photos/'~post.picture) }}" width="470px">
+                            </div>
+                        </div>
+                            <h4 style="margin-left: 10px">{{post.content}}</h4>
+                            
+                            <div class=" bg-green" style="margin-left: 10px"><i class="far fa-clock"></i> <strong>{{ post.date_post | date }}</strong></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
 {% endblock %}
+
