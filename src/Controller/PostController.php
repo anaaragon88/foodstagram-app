@@ -44,7 +44,8 @@ class PostController extends AbstractController
             $em = $doctrine->getManager();
             $em->persist($post);
             $em->flush();
-            return $this->redirectToRoute('app_dashboard');
+            $this->addFlash('success', Post::SUCCESS_POST);
+            return $this->redirectToRoute('crear_post');
         }
         return $this->render('post/index.html.twig', [
             'form' => $form->createView()

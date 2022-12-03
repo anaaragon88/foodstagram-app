@@ -1,16 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello RegisterController!{% endblock %}
+{% block title %}Hello RegistroController!{% endblock %}
 
 {% block body %}
-    {% for message in app.flashes('success') %}
+
+
+    <div class="container h-100 ">
+        <div class="row h-100 justify-content-center align-items-center ">
+            <div class="col-6 bg-white rounded my-3 p-5">
+            <center>
+                {% for message in app.flashes('success') %}
         <div class="alert alert-success">
             {{ message }}
         </div>
     {% endfor %}
+                <h1>Registro</h1>
+                {{ form(formulario) }}
+                <hr>
+                    <a href="{{ path('app_login') }}"><button class="btn btn-sm btn-info" type="submit">Login</button></a>
+            </center>
+            </div>
 
-<div class="example-wrapper">
-{{form(formulario)}}
+        </div>
 
-</div>
+    </div>
+
 {% endblock %}

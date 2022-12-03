@@ -3,24 +3,22 @@
 
 {% block body %}
     {{ parent() }}
-    <div class="container bg-white rounded my-3 p-4" >
+    <div class="container bg-white rounded my-3 p-4 col-md-8" >
         <div class="d-flex bd-highlight">
             <div class="p-2 flex-grow-1 bd-highlight">
-                <h3>{{post.user.name_user}} - Post </h3>
+                <h4><div class="text-justify my-3">{{ post.content }}
+        </div></h4>
+                By {{post.user.name_user}}.
                 <div class="my-3" style="color:#3282b8;">
                   <i class="fa fa-thumbs-up"></i><strong>
                 </div>
-                <div style="color:#5957a1;"> 
-                    <i class="far fa-clock"></i> <strong>Fecha: {{ post.datePost | date }}</strong>
+                <div style="color:#FF7900;"> 
+                    <i class="far fa-clock"></i> <strong>{{ post.datePost | date }}</strong>
                 </div>
             </div>
-        <hr>
-        <div class="text-justify my-3">
-            Comentario: {{ post.content }}
-        </div>
                         <div class="p-2 bd-highlight">
                   <div class="align-self-center">
-                    <img class="rounded" src="{{ asset('uploads/photos/'~post.picture) }}" width="750px">
+                    <img class="rounded" src="{{ asset('uploads/photos/'~post.picture) }}" width="600px">
                   </div>
                 </div>
       </div>

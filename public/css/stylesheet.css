@@ -24,7 +24,7 @@
 }
 
 body {
-    background-color: #EB5629;
+    background-color: #e6e6e6;
     background-size: cover;
     height: 500px;
     font-family: signikaregular;
@@ -39,7 +39,7 @@ h4,
 h5,
 h6 {
     font-family: signikabold;
-    color: #3821AB;
+    color: #3f3f3f;
 }
 
 .navbar {
@@ -56,31 +56,23 @@ h6 {
 
 
 .nav-link:hover {
-    color: #EB5629 !important;
+    color: #289300 !important;
 }
 
 
 .nav-link {
     color: #3e3e3e !important;
-    padding: 20px !important;
-}
 
-.nav-usuario {
-    color: #ffffff !important;
-    font-family: signikabold;
-    margin-top: 20px;
-    margin-right: 20px;
-    font-size: 2em;
 }
 
 .fa-user,
 .bg-yellow {
-    color: #7190ff;
+    color: #289300;
 }
 
 .fa-clock,
 .bg-green {
-    color: #5957a1;
+    color: #FF7900;
 }
 
 .cursor:hover {
@@ -98,6 +90,11 @@ h6 {
 
 .btn {
     margin: 5px !important;
+    background-color: #289300;
+}
+
+.btn:hover {
+    background-color: #1d5708;
 }
 
 .btn-link {

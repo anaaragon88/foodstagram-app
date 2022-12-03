@@ -9,6 +9,11 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: PostRepository::class)]
 class Post
 {
+
+    const SUCCESS_POST = 'Tu imagen se ha publicado exitosamente';
+
+    const CAMBIO_EXITOSO = 'Se ha hecho el cambio exitosamente';
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

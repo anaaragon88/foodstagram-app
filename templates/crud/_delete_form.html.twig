@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('app_crud_delete', {'id': post.id}) }}" onsubmit="return confirm('¿Estás seguro que quieres borrar este post?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ post.id) }}">
+    <button class="btn-sm btn-danger">Eliminar</button>
+</form>
+
