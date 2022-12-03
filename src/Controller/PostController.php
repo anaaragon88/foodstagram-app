@@ -18,6 +18,7 @@ class PostController extends AbstractController
     #[Route('/crear-post', name: 'crear_post')]
     public function index(Request $request, ManagerRegistry $doctrine, SluggerInterface $slugger): Response
     {
+
         $post = new Post();
         $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);
@@ -63,6 +64,7 @@ class PostController extends AbstractController
     #[Route('/mi-perfil', name: 'MiPerfil')]
     public function MisPost(ManagerRegistry $doctrine)
     {
+
         $em = $doctrine->getManager();
         $user = $this->getUser();
         $posts = $em->getRepository(Post::class)->findBy(['user' => $user]);

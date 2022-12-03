@@ -13,38 +13,12 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/crud')]
 class CrudController extends AbstractController
 {
+
     #[Route('/', name: 'app_crud_index', methods: ['GET'])]
     public function index(PostRepository $postRepository): Response
     {
         return $this->render('crud/index.html.twig', [
             'posts' => $postRepository->findAll(),
-        ]);
-    }
-
-    #[Route('/new', name: 'app_crud_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, PostRepository $postRepository): Response
-    {
-        $post = new Post();
-        $form = $this->createForm(Post1Type::class, $post);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $postRepository->save($post, true);
-
-            return $this->redirectToRoute('app_crud_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('crud/new.html.twig', [
-            'post' => $post,
-            'form' => $form,
-        ]);
-    }
-
-    #[Route('/{id}', name: 'app_crud_show', methods: ['GET'])]
-    public function show(Post $post): Response
-    {
-        return $this->render('crud/show.html.twig', [
-            'post' => $post,
         ]);
     }
 

@@ -36,12 +36,9 @@
                             <a class="nav-link" href="{{ path('app_crud_index') }}">Editar</a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
-                        </li>
                     </ul>
-                    <p class="nav-link" style="float: right">
-                    Hola {{ app.user.name_user }}</p>
+                    <p style="float: right">
+                    <a class="nav-link" href="{{ path('app_logout') }}">Logout</a></p>
                 </div>
             </nav>
         {% endblock %}
