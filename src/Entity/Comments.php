@@ -9,6 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: CommentsRepository::class)]
 class Comments
 {
+    const COMENTARIO_AGREGADO_EXITOSAMENTE = '¡Comentario Agregado exitosamente!';
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -25,6 +27,14 @@ class Comments
 
     #[ORM\ManyToOne(targetEntity: Post::class, inversedBy: 'comments')]
     private $post;
+
+    /**
+     * Post constructor.
+     */
+    public function __construct()
+    {
+        $this->date_comment = new \DateTime();
+    }
 
     public function getId(): ?int
     {
@@ -53,5 +63,37 @@ class Comments
         $this->date_comment = $date_comment;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user): void
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPost()
+    {
+        return $this->post;
+    }
+
+    /**
+     * @param mixed $post
+     */
+    public function setPost($post): void
+    {
+        $this->post = $post;
     }
 }

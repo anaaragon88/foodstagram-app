@@ -3,11 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Post;
+use App\Entity\Comments;
+use App\Form\CommentType;
 use App\Form\PostType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -55,11 +58,30 @@ class PostController extends AbstractController
     }
 
     #[Route('/post/{id}', name: 'VerPost')]
-    public function VerPost($id, Request $request, ManagerRegistry $doctrine)
+    public function VerPost($id, Request $request, ManagerRegistry $doctrine, PaginatorInterface $paginator)
     {
         $em = $doctrine->getManager();
+        $comment = new Comments();
         $post = $em->getRepository(Post::class)->find($id);
-        return $this->render('post/verPost.html.twig', ['post' => $post]);
+        $queryComments = $em->getRepository(Comments::class)->BuscarComentariosDeUNPost($post->getId());
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user = $this->getUser();
+            $comment->setPost($post);
+            $comment->setUser($user);
+            $em->persist($comment);
+            $em->flush();
+            $this->addFlash('Success', Comments::COMENTARIO_AGREGADO_EXITOSAMENTE);
+            return $this->redirectToRoute('VerPost', ['id' => $post->getId()]);
+        }
+        $pagination = $paginator->paginate(
+            $queryComments, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            20 /*limit per page*/
+        );
+
+        return $this->render('post/verPost.html.twig', ['post' => $post, 'form' => $form->createView(), 'comments' => $pagination]);
     }
 
     #[Route('/mi-perfil', name: 'MiPerfil')]
