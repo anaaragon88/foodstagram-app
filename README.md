@@ -53,6 +53,7 @@ ______
 Entidades en base de datos:
 ![](./public/img/entidades.png)
 
-
-
+______ 
+# Buenas prácticas:
+- Experiencia de Usuario: Se buscó que los botones tuvieran los colores estandarizados (ej: rojo para eliminar), jerarquía en el tamaño de las tipografías
 
