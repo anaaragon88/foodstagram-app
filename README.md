@@ -48,10 +48,11 @@ ______
 
 Arquitectura: 
 ![](./public/img/arquitectura.png)
+______ 
 
 Entidades en base de datos:
 ![](./public/img/entidades.png)
-______ 
-______ 
+
+
 
 
