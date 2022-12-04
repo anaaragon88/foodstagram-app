@@ -27,16 +27,16 @@ creas relevante para nosotras )
 # Vistas 
 ______ 
 ### Página principal
-![](./public/img/pagina principal.png)
+![](./public/img/pagina_principal.png)
 
 ### Perfil
 ![](./public/img/perfil.png)
 
 ### Ver Post
-![](./public/img/ver post.png)
+![](./public/img/ver_post.png)
 
 ### Crear Post
-![](./public/img/crear post.png)
+![](./public/img/crear_post.png)
 
 ### Editar 
-![](./public/img/editar post.png)
+![](./public/img/editar_post.png)
