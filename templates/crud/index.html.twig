@@ -38,7 +38,7 @@
                 <td>{{ post.likes }}</td>
                 <td>{{ post.datePost ? post.datePost|date('Y-m-d') : '' }}</td>
                 <td>
-                    <button class="btn btn-sm btn-primary" type="submit"><a class="btn-link" href="{{ path('app_crud_edit', {'id': post.id}) }}">Editar texto</a>
+                    <button class="btn btn-sm btn-primary" type="submit"><a class="btn-link" href="{{ path('app_crud_edit', {'id': post.id}) }}">Editar texto</a>       {{ include('crud/_delete_form.html.twig') }}
                 </td>
             </tr>
         {% else %}
