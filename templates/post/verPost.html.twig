@@ -3,11 +3,24 @@
 
 {% block body %}
     {{ parent() }}
+    {% set LikesDeEstePost = post.likes | split(',') %}
     <div class="container bg-white rounded my-3 p-4 col-md-8" >
         <div class="d-flex bd-highlight">
             <div class="p-2 flex-grow-1 bd-highlight">
                 <h4><div class="text-justify my-3">{{ post.content }}
-        </div></h4>
+            </div></h4>
+            
+            <div class="my-3" style="color:#3282b8;" onclick="MeGusta({{ post.id }})">
+                    <i class="fa fa-thumbs-up"></i><strong>
+                    {% if app.user.name_user in  LikesDeEstePost %}
+                        Le gustó a {{ post.likes }}
+                        {% else %}
+                        <button>♥️</button>
+                        {% endif %}
+
+                        <hr>
+                    </strong>
+            </div>
                 By {{post.user.name_user}}.
                 <div class="my-3" style="color:#3282b8;">
                   <i class="fa fa-thumbs-up"></i><strong>
@@ -22,4 +35,11 @@
                   </div>
                 </div>
       </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script src="{{ asset('js/ajax-call.js') }}"></script>
 {% endblock %}

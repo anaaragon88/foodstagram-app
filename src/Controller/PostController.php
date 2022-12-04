@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
@@ -69,5 +70,27 @@ class PostController extends AbstractController
         $user = $this->getUser();
         $posts = $em->getRepository(Post::class)->findBy(['user' => $user]);
         return $this->render('post/MisPosts.html.twig', ['posts' => $posts]);
+    }
+
+    /**
+     * @Route("/Likes", options={"expose"=true}, name="Likes")
+     */
+
+    #[Route('/likes', name: 'Likes')]
+    public function Like(Request $request, ManagerRegistry $doctrine)
+    {
+        if ($request->isXmlHttpRequest()) {
+            $em = $doctrine->getManager();
+            $user = $this->getUser();
+            $id = $request->request->get('id');
+            $post = $em->getRepository(Post::class)->find($id);
+            $likes = $post->getLikes();
+            $likes .= $user->getName_user() . ', ';
+            $post->setLikes($likes);
+            $em->flush();
+            return new JsonResponse(['likes' => $likes]);
+        } else {
+            throw new \Exception('Estás tratando de hackearme?');
+        }
     }
 }
