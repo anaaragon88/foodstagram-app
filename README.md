@@ -10,6 +10,10 @@ Debes tener instalado COMPOSER una vez hayas clonado el proyecto, posteriormente
 ### `composer install`
 Una vez ejecutado este comando se creará la carpeta vendor la cual contiene los bundles y códigos de terceros.
 
+Estos comandos son para crear/actualizar la base de datos
+### `php bin/console doctrine:database:create`
+### `php bin/console doctrine:schema:update --force`
+
 Ejecútalo con:
 ### `symfony server:start`
 ______ 
